@@ -1,0 +1,13 @@
+{
+  "name": "test-task",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "sass": "^1.22.10"
+  },
+  "dependencies": {
+    "lib": "^4.0.5"
+  }
+}

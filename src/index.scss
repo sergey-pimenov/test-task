@@ -1,0 +1,11 @@
+// Libs
+@import 'lib/styles/normalize';
+
+// Ulils. Vars, mixins etc.
+@import 'utils/styles/variables';
+
+// Common
+@import 'common/styles/basic';
+
+// Blocks
+@import 'blocks/header/header';

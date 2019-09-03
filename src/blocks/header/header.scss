@@ -1,0 +1,346 @@
+.header {
+  min-height: 78px;
+  padding: 0 $pagePaddingX;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: white;
+
+  $mobileBreackpoint: 860px;
+
+  &.isColumn {
+    @media all and (min-width: $mobileBreackpoint) {
+      width: 300px;
+      height: 100vh;
+      padding: 52px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  @media all and (max-width: $mobileBreackpoint) {
+    padding: 0 $pagePaddingXMobile;
+    height: 72px;
+  }
+
+  .logo {
+    transition: all 0.15s ease-out;
+  }
+
+  &.showMenu .logo {
+    transform: translateX(1px) skewX(4deg);
+    opacity: 0;
+  }
+  
+  .mobileMenuWrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    @media all and (max-width: $mobileBreackpoint) {
+      width: auto;
+      margin: 0 40px 0 auto;
+    }
+  }
+
+  &.isColumn .mobileMenuWrapper {
+    @media all and (min-width: $mobileBreackpoint) {
+      flex: 1;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &.showMenu .mobileMenuWrapper {
+    width: 100%;
+    height: 100%;
+    padding-top: 75px;
+    visibility: visible;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: white;
+    flex-direction: column;
+    overflow-y: auto;
+
+    .navigation {
+      display: flex;
+      position: static;
+      transform: none;
+
+      & > .link {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  }
+
+  $navigationLinkMargin: 42px;
+
+  .navigation {
+    margin-left: 91px - $navigationLinkMargin / 2;
+    display: flex;
+
+    @media all and (max-width: $mobileBreackpoint) {
+      margin-left: 0;
+      padding-bottom: 50px; // Для красивого отступа при переполнении контена по высоте
+      flex-direction: column;
+      position: absolute; // Хак чтобы не делать display: none для того чтобы не отвалились transition'ы
+      left: -100vw;
+    }
+
+    & > .link {
+      // Увеличил hover область для лучшего UX
+      padding: 18px $navigationLinkMargin / 2;
+      align-items: center;
+      letter-spacing: 2px;
+      font-size: 9px;
+
+      @media all and (max-width: $mobileBreackpoint) {
+        padding: 18px;
+        text-align: center;
+        font-size: 16px;
+        transform: translateX(-7px);
+        opacity: 0;
+        transition: all 0.15s;
+
+        $delay: 0.03;
+
+        @for $i from 0 through 10 {
+          &:nth-child(#{$i}) {
+            transition-delay: 0.03 + $delay * $i + 0.05 + s;
+          }
+        }
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &.isColumn .navigation {
+    @media all and (min-width: $mobileBreackpoint) {
+      margin: 106px 0 0 -20px;
+      flex-direction: column;
+    }
+  }
+
+  .multiLinks {
+    padding: 15px $navigationLinkMargin / 2;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+
+    @media all and (max-width: $mobileBreackpoint) {
+      padding: 15px $navigationLinkMargin / 2;
+      flex-direction: column;
+    }
+
+    .title {
+      transition: color 0.15s ease-out;
+      letter-spacing: 2px;
+      font-size: 9px;
+      z-index: 1;
+      background-color: white;
+      position: relative;
+
+      @media all and (max-width: $mobileBreackpoint) {
+        font-size: 16px;
+        transition: all 0.15s 0.03s ease-out;
+        opacity: 0;
+        transform: translateX(-7px);
+      }
+    }
+
+    .list {
+      min-width: 160px;
+      position: absolute;
+      left: -6px;
+      top: 40px;
+      visibility: hidden;
+      transform: translateY(-3px);
+      opacity: 0;
+      transition: all 0.15s ease-out;
+
+      @media all and (max-width: $mobileBreackpoint) {
+        padding-top: 37px;
+        display: none;
+        flex-direction: column;
+        position: static;
+      }
+    }
+
+    &:focus-within .list,
+    &:hover .list {
+      visibility: visible;
+      transform: none;
+      opacity: 1;
+
+      @media all and (max-width: $mobileBreackpoint) {
+        display: flex;
+      }
+    }
+
+    &:hover .title,
+    &:focus-within .title {
+      color: $colorTextSecondary;
+    }
+
+    .item {
+      display: flex;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid rgba(black, 0);
+      }
+    }
+
+    .link {
+      width: 100%;
+      min-height: 44px;
+      padding-left: 27px;
+      display: flex;
+      align-items: center;
+      background-color: white;
+      letter-spacing: 2px;
+      font-size: 9px;
+      color: #151515;
+
+      @media all and (max-width: $mobileBreackpoint) {
+        min-height: 0;
+        padding: 15px 0;
+        justify-content: center;
+      }
+    }
+  }
+
+  &.isColumn .multiLinks {
+    @media all and (min-width: $mobileBreackpoint) {
+      display: block;
+
+      .title {
+        margin-bottom: 12px;
+      }
+
+      .list {
+        min-width: 0;
+        position: static;
+        margin-top: -5%;
+        height: 0;
+        transition: all 0.15s ease-out;
+      }
+
+      &:focus-within .list,
+      &:hover .list {
+        height: auto;
+        margin-top: 0;
+      }
+
+      .link {
+        min-height: 0;
+        padding: 12.5px 0;
+      }
+    }
+  }
+
+  &.showMenu .mobileMenuWrapper .title {
+    opacity: 1;
+    transform: none;
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    cursor: pointer;
+
+    @media all and (max-width: $mobileBreackpoint) {
+      margin: 0 -3px 0 0;
+      order: -1;
+      transform: translateX(-3px);
+      transition: transform 0.15s ease-out;
+    }
+
+    .icon {
+      width: 15px;
+      height: 15px;
+      fill-rule: evenodd;
+      fill: currentColor;
+
+      @media all and (max-width: $mobileBreackpoint) {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .input {
+      // Пока просто спятал
+      display: none;
+    }
+  }
+
+  &.isColumn .search {
+    @media all and (min-width: $mobileBreackpoint) {
+      margin: auto 0 0 0;
+    }
+  }
+
+  &.showMenu .search {
+    margin-bottom: 13px;
+    transform: none;
+  }
+
+  .navigationButton {
+    margin-left: auto;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+
+    .icon {
+      width: 21px;
+      height: 14px;
+      overflow: visible;
+      stroke-width: 1px;
+      stroke: currentColor;
+
+      path {
+        transform-origin: 100% 0;
+        transition: all 0.2s;
+
+        &:nth-child(3) {
+          transform-origin: 19px 14.5px;
+        }
+      }
+    }
+
+    @media all and (min-width: $mobileBreackpoint) {
+      display: none;
+    }
+
+    @media all and (max-width: $mobileBreackpoint) {
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  &.showMenu .navigationButton .icon  {
+    path {
+      &:first-child {
+        transform: rotate(-45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+        transform: rotate(-45deg) translateY(-4px);
+      }
+
+      &:last-child {
+        transform: rotate(45deg);
+      }
+    }
+  }
+}

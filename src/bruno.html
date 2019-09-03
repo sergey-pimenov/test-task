@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="content=width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title> Bruno </title>
+  <link rel="stylesheet" href="./index.scss">
+</head>
+<body>
+  <header class="header">
+    <a href="./">
+      <img class="logo" src="./img/bruno.svg" alt="Bruno">
+    </a>
+
+    <div class="mobileMenuWrapper">
+      <nav class="navigation">
+        <!-- Links can be placed into "<ul> <li>...". But it's unduly. -->
+        <section class="multiLinks" tabindex="0">
+          <h4 class="title">портфолио</h4>
+          <ul class="list">
+            <li class="item">
+              <a class="link" href="#">портфолио</a>
+            </li>
+            <li class="item">
+              <a class="link" href="#">детали</a>
+            </li>
+            <li class="item">
+              <a class="link" href="#">lifestyle</a>
+            </li>
+          </ul>
+        </section>
+        <a class="link" href="#">видео</a>
+        <a class="link" href="#">отзывы</a>
+        <a class="link" href="#">видео</a>
+        <a class="link" href="#">контакты</a>
+      </nav>
+  
+      <form class="search">
+        <svg class="icon" viewBox="0 0 15 15">
+          <path d="M13.863 13.862a.5.5 0 0 1-.707 0L9.002 9.708C8.048 
+                10.503 6.838 11 5.5 11a5.5 5.5 0 1 1 0-11A5.5 
+                5.5 0 0 1 11 5.5c0 1.338-.497 2.548-1.291 
+                3.501l4.154 4.154a.5.5 0 0 1 0 .707zM5.5 
+                1a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9z"/>
+        </svg>
+        <input class="input" type="search">
+      </form>
+    </div>
+
+    <button class="navigationButton">
+      <svg viewBox="0 0 21 14" class="icon"><path d="M1 1H21"></path><path d="M1 7H21"></path><path d="M1 13H21"></path></svg>
+    </button>
+  </header>
+
+  <script src="./index.js"></script>
+</body>
+</html>
